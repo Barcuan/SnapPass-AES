@@ -205,10 +205,7 @@ def show_password(password_key):
 
 @check_redis_alive
 def main():
-    if NO_SSL:
-        serve(app, host='0.0.0.0', port=5000)
-    else:
-        serve(app, host='0.0.0.0', port=5000, url_scheme='https')
+    serve(app, host='0.0.0.0', port=5000)
 
 
 if __name__ == '__main__':

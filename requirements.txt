@@ -1,1 +1,7 @@
+cryptography==42.0.7
+fakeredis==2.23.2
 Flask==3.0.3
+redis==5.0.4
+waitress==3.0.0
+setuptools==58.0.4
+
