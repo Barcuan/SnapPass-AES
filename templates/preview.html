@@ -1,19 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-  <section>
-    <div class="page-header">
-      <h1>Secret</h1>
-    </div>
-    <p class="lead">Vous ne pouvez révéler le secret qu'une seule fois !</p>
-    <div class="row">
-      <div class="col-sm-6 margin-bottom-10">
-        <button id="revealSecret" type="button" class="btn-lg btn-primary">Révéler le secret</button>
-      </div>
-    </div>
-  </section>
-</div>
+<p class="lead alert alert-warning">Attention : Vous ne pouvez ouvrir ce lien QU'UNE SEULE fois !<br/>
+  <small><i>Veuillez enregistrer le secret dans un endroit sécurisé, comme <a href="https://keepassxc.org/" title="KeePassXC">KeePassXC</a></i></small>
+</p>
+
+<form method="post" action="{{ password_link }}"">
+    <input type="submit" name="reveal" value="Open password" class="btn-lg btn-primary btn-preview">  
+</form>
 {% endblock %}
 
 {% block js %}

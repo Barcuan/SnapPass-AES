@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-  <section>
-    <div class="page-header"><h1>Secret introuvable</h1></div>
-    <p class="lead">L'URL demandée n'a pas été trouvée sur le serveur. Cela peut être dû au fait que cette URL n'a jamais contenu de secret, ou qu'elle a expiré ou a été révélée précédemment.</p>
-    <p class="lead">Si cette URL vous a été envoyée par quelqu'un, assurez-vous de vérifier votre orthographe ou demandez à la personne qui vous l'a envoyée d'envoyer un nouveau secret.</p>
-  </section>
+<h3 class="alert alert-danger">Aucune donnée trouvée</h3>
+
+<div class="alert text-left">
+  <p>Il y a quatre raisons possibles pour lesquelles ce message n'existe pas :</p>
+
+  <ol>
+    <li><strong>L'URL est incorrecte :</strong> Vérifiez à nouveau l'URL et assurez-vous de ne pas avoir fait d'erreur.</li>
+    <li><strong>Le message a expiré :</strong> L'expéditeur définit une durée de validité pour le message.</li>
+    <li><strong>Vous essayez de voir le message une deuxième fois :</strong> Désolé, nous supprimons le message immédiatement après le premier accès. Cela garantit uniquement la confidentialité du message.</li>
+    <li><strong class="alert-danger">Quelqu'un d'autre a vu le message avant vous :</strong> Si vous essayez de voir le message pour la première fois, en utilisant la bonne URL et pendant la période de validité, cela signifie que quelqu'un d'autre a vu le message avant vous. Vous devriez immédiatement prendre des mesures pour atténuer les conséquences éventuelles de la lecture du message par quelqu'un d'autre. <strong>Nous vous suggérons de contacter l'expéditeur du message pour l'informer de la violation de la confidentialité.</strong></li>
+  </ol>
 </div>
+
+<a href="/" class="btn btn-primary btn-return">Aller à la page d'accueil</a>
 {% endblock %}

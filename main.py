@@ -202,11 +202,15 @@ def show_password(password_key):
 
     return render_template('password.html', password=password)
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 
 @check_redis_alive
 def main():
     serve(app, host='0.0.0.0', port=5000)
-
+    #app.run(ssl_context='adhoc')
 
 if __name__ == '__main__':
     main()
