@@ -202,14 +202,20 @@ def show_password(password_key):
 
     return render_template('password.html', password=password)
 
-@app.route('/about')
+@app.route('/about')  
 def about():
     return render_template('about.html')
 
 
 @check_redis_alive
 def main():
-    serve(app, host='0.0.0.0', port=5000)
+    # Chemin vers les fichiers de certificat et de clé
+    cert_path = "selfsigned.crt"
+    key_path = "selfsigned.key"
+    
+    # Démarrer l'application Flask avec SSL
+    app.run(host='0.0.0.0', port=443, ssl_context=(cert_path, key_path))
+    #app.run(host='0.0.0.0', port=80)
     #app.run(ssl_context='adhoc')
 
 if __name__ == '__main__':
