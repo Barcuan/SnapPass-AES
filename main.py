@@ -5,7 +5,7 @@ import uuid
 import redis
 
 from cryptography.fernet import Fernet
-from flask import abort, Flask, render_template, request, jsonify
+from flask import abort, Flask, render_template, request, jsonify, send_from_directory
 from redis.exceptions import ConnectionError
 from urllib.parse import quote_plus
 from urllib.parse import unquote_plus
@@ -89,6 +89,9 @@ def parse_token(token):
 
     return storage_key, decryption_key
 
+@app.route('/.well-known/acme-challenge/<path:filename>')
+def well_known(filename):
+    return send_from_directory('.well-known/acme-challenge', filename)
 
 @check_redis_alive
 def set_password(password, ttl):
@@ -214,9 +217,10 @@ def main():
     key_path = "selfsigned.key"
     
     # Démarrer l'application Flask avec SSL
-    app.run(host='0.0.0.0', port=443, ssl_context=(cert_path, key_path))
+    #app.run(host='0.0.0.0', port=443, ssl_context=(cert_path, key_path))
+
     #app.run(host='0.0.0.0', port=80)
-    #app.run(ssl_context='adhoc')
+    serve(app, host='0.0.0.0', port=80)
 
 if __name__ == '__main__':
     main()

@@ -17,7 +17,7 @@ def generate_self_signed_cert(cert_file, key_file):
     cert.get_subject().L = "St-Laurent-Blangy"
     cert.get_subject().O = "Ma Société"
     cert.get_subject().OU = "Mon Département"
-    cert.get_subject().CN = "snappass.aesdana.com"
+    cert.get_subject().CN = "*.ngrok-free.app"
     cert.set_serial_number(1000)
     cert.gmtime_adj_notBefore(0)
     cert.gmtime_adj_notAfter(365 * 24 * 60 * 60)
